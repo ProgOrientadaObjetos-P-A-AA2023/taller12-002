@@ -5,47 +5,45 @@
  */
 package p2;
 
-import p1.MatriculaCampamento;
-import p1.MatriculaColegio;
+import java.util.ArrayList;
+import p1.*;
 
 /**
  *
  * @author reroes
  */
 public class TipoMatricula {
+
     private double promedioMatriculas;
-    private MatriculaCampamento campamento;
-    private MatriculaColegio colegio;
-    // private MatriculaEscuela escuela;
-    // private MatriculaJardin jardin;
-    // private MatriculaMaternal maternal;
-    // private MatriculaMaternal maternal2;
-    
-    public void establecerMatriculaCampamento(MatriculaCampamento c){
-        campamento = c;
+    private ArrayList<Matricula> matriculas;
+
+    public void establecerPromedioMatriculas() {
+        double suma = 0;
+
+        for (int i = 0; i < matriculas.size(); i++) {
+            suma = suma + matriculas.get(i).obtenerTarifa();
+        }
+
+        promedioMatriculas = suma / matriculas.size();
     }
-    
-    public void establecerMatriculaColegio(MatriculaColegio c){
-        colegio = c;
+
+    public void establecerMatriculas(ArrayList<Matricula> m) {
+        matriculas = m;
     }
-    
-    public MatriculaCampamento obtenerMatriculaCampamento(){
-        return campamento;
-    }
-    
-    public MatriculaColegio obtenerMatriculaColegio(){
-        return colegio;
-    }
-    
-    public void establecerPromedioTarifas(){
-        promedioMatriculas = (obtenerMatriculaCampamento().obtenerTarifa() + 
-                obtenerMatriculaColegio().obtenerTarifa())/2;
-        
-    }
-    
-    public double obtenerPromedioTarifas(){
+
+    public double obtenerPromedioMatriculas() {
         return promedioMatriculas;
     }
-    
-    
+
+    public ArrayList<Matricula> obtenerMatriculas() {
+        return matriculas;
+    }
+
+    @Override
+    public String toString() {
+        String mensaje = String.format("La tarifa promedio es: %.2f\n", 
+                promedioMatriculas);
+        return mensaje;
+    }
+
 }
