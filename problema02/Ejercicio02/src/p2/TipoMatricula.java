@@ -41,7 +41,14 @@ public class TipoMatricula {
 
     @Override
     public String toString() {
-        String mensaje = String.format("La tarifa promedio es: %.2f\n", 
+         String mensaje = "Listado de Matrículas: \n";
+        for (Matricula m : matriculas) {
+            mensaje = String.format("%s%s"
+                    + "-----------------\n", mensaje, m);
+        }
+        
+         mensaje = String.format("%s\nLa tarifa promedio es: %.2f\n",
+                mensaje, 
                 promedioMatriculas);
         return mensaje;
     }

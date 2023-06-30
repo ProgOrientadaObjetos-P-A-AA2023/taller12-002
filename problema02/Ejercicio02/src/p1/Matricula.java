@@ -16,6 +16,11 @@ public abstract class Matricula {
     public double obtenerTarifa() {
         return tarifa;
     }
+     @Override
+    public String toString(){
+        return String.format("Tarifa: %.2f\n",
+                obtenerTarifa());
+    }
     
     
     
